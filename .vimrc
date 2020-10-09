@@ -1,55 +1,63 @@
-let mapleader = "\<Space>"
 let g:airline_powerline_fonts = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exe = 'npm run lint:one --'
 let g:netrw_banner = 0
-" let g:netrw_altv=1
+let mapleader = "\<Space>"
 
+" refresh .vimrc
 nnoremap <leader>rv :source $MYVIMRC<CR>
-" handy git commands
-nnoremap <leader>gs :!clear && git status<CR>
-nnoremap <leader>gd :!clear && git diff<CR>
-nnoremap <leader>gl :!clear && git log<CR>
-nnoremap <leader>gc :!clear && git commit<CR>
-nnoremap <leader>gq :GitGutterQuickFix :cn<CR>
-nnoremap <leader>tfi :!clear && npm run ci-feature -- %<CR>
-nnoremap <leader>tfb :!clear && npm run feature -- %<CR>
-nnoremap <leader>tfa :!clear && npm run feature<CR>
-nnoremap <leader>tu :!clear && jest %<CR>
-nnoremap <leader>c :!find . -type f -name '*.swp' -delete<CR>
+
+" env specific things
+nnoremap <leader>ss :term ++hidden ++open npm run start:local<CR>
+nnoremap <leader>su :term ++hidden ++open npm run start-ui<CR>
+nnoremap <leader>tfa :term ++hidden ++open npm run feature<CR>
+nnoremap <leader>tfb :term ++hidden ++open npm run feature -- %<CR>
+nnoremap <leader>tfi :term ++hidden ++open npm run ci-feature -- %<CR>
+nnoremap <leader>tu :vert ter jest % --watch<CR>
+
+" plugin mappings
+nnoremap <F5> :MundoToggle<CR>
 nnoremap <leader>i :SortImport<CR>
 
-" exit insert mode by pressing jj 
-" inoremap jj <Esc>
+" experimental
+"
+" fuzzy searching with git ignore
+map <leader>sf :call fzf#run(fzf#wrap({'source': 'git ls-files --exclude-standard --others --cached', 'sink': 'edit'}))<CR>
+" search word under cursor
+map <leader>s* :grep <cword> -R --exclude-dir=node_modules --exclude="node_modules/*" */**/src/*<CR>
+" global search
+map <leader>sl* :grep <cword> -R --exclude-dir=node_modules --exclude="node_modules/*" */**/src/*<CR>
+" global search
+fun! Grep( arg ) "{{{
+    execute ':grep' a:arg '-R --exclude-dir=node_modules --exclude="node_modules/*" */**/src/*'
+endfunction "}}}
+command! -nargs=* Grep call Grep( '<args>' )
 
-syntax on
 colorscheme molokai
-set shiftwidth=2
-set number
-set ignorecase
-set smartcase
-set nowrap
 set encoding=UTF-8
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-set updatetime=100
+set hidden " buffer handling
+set nowrap
+set number
+set shiftwidth=2
+set updatetime=100 " vim-gitgutter option
+syntax on
 
 call plug#begin('~/.vim/plugged')
  
-Plug 'dense-analysis/ale'
-Plug 'airblade/vim-gitgutter'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-Plug 'vim-airline/vim-airline'
-Plug 'vim-syntastic/syntastic'
-Plug 'tpope/vim-fugitive'
-Plug 'ruanyl/vim-sort-imports'
+" extending vim language
+Plug 'tpope/vim-commentary' " comment out things 'gc'
+Plug 'tpope/vim-surround' " suround things ysiw ds' cs{ etc
 
-" PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" visual helpers
+Plug 'airblade/vim-gitgutter' " self explanitory
+Plug 'dense-analysis/ale' " syntax checking
+Plug 'neoclide/coc.nvim' " intellisense
+Plug 'ruanyl/vim-sort-imports' " this guy needs an accompanying install locally
+Plug 'vim-airline/vim-airline' " git branch and file in the status line
+Plug 'wsdjeg/vim-mundo' " undo history
+
+" Bad ass tools
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy search
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'tpope/vim-fugitive' " godly git powers
+Plug 'tpope/vim-rhubarb' " GBrowse compatiblity, github issue completion
 
 call plug#end()
