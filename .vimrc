@@ -31,7 +31,6 @@ autocmd FileType typescriptreact setlocal formatprg=npx\ prettier\ --parser\ typ
 
 call plug#begin('~/.vim/plugged')
   Plug 'dense-analysis/ale'
-  Plug 'sheerun/vim-polyglot'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-eunuch'
   Plug 'tpope/vim-flagship'
