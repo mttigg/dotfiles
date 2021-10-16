@@ -259,9 +259,8 @@ echo "Fetching DotFiles..."
 sudo yum install tmux
 git clone git@github.com:mtti-g/dotfiles.git
 echo "Moving DotFiles to user root..."
-mv dotfiles/.vimrc ../
-mv dotfiles/.bashrc ../
-cp dotfiles/bash_profile.sh ../
+cp dotfiles/.vimrc ../
+cp dotfiles/.bashrc ../
 echo "-----DotFiles-Installed-----\n\n"
 
 clear -x
