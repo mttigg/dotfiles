@@ -177,6 +177,9 @@ read email
 cat ~/ascii.txt
 sleep 3
 
+git config --global user.name "mtti-g"
+git config --global user.email $email
+
 echo "Generating SSH key for GitHub..."
 ssh-keygen -t ed25519 -C $email -f gh
 echo "Moving SSH Key To Storage (~/.ssh)..."

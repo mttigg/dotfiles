@@ -77,8 +77,6 @@ cat ~/ascii.txt
 
 sleep 2
 eval "$(ssh-agent -s)"
-
-rm ~/ascii.txt
 clear -x
 
 echo "                                                                                     ,---. ";
@@ -93,5 +91,6 @@ echo "                                                                          
 cat ~/ascii.txt
 
 sleep 2
+rm ~/ascii.txt
 clear -x
 
