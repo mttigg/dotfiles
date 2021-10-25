@@ -125,5 +125,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export HUSKY_SKIP_HOOKS=1
+export EDITOR="/usr/bin/vim"
 
-bash ~/git/dotfiles/login.sh
+source ~/git/dotfiles/.nova_commands.sh
+
+source ~/git/dotfiles/login.sh
