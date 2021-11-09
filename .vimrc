@@ -1,10 +1,13 @@
-let g:ale_completion_autoimport = 1
-let g:ale_fixers = ['tsserver']
-let g:ale_lint_on_text_changed = 0
-let g:ale_lint_on_enter = 0
+" let g:ale_completion_autoimport = 1
+let g:ale_fixers=['tsserver']
+let g:ale_lint_on_text_changed=0
+let g:ale_lint_on_enter=0
+let g:ale_lint_on_filetype_changed=0
+let g:hardtime_default_on=1
 
 set backupcopy=yes
 set cmdheight=2
+set relativenumber
 set updatetime=50
 set hidden
 set nowrap
@@ -19,7 +22,7 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 filetype indent on
-colorscheme gruvbox
+colorscheme efficient
 
 nnoremap <C-P>f :find ./src/**/*
 nnoremap <C-P>g :grep -r  ./src/**<Left><Left><Left><Left><Left><Left><Left><Left><Left>
@@ -37,6 +40,7 @@ autocmd FileType typescript*
   \ setlocal omnifunc=ale#completion#OmniFunc
 
 call plug#begin('~/.vim/plugged')
+  Plug 'takac/vim-hardtime'
   Plug 'dense-analysis/ale'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-abolish'
