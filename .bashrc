@@ -127,6 +127,6 @@ export NVM_DIR="$HOME/.nvm"
 export HUSKY_SKIP_HOOKS=1
 export EDITOR="/usr/bin/vim"
 
-source ~/git/dotfiles/.nova_commands.sh
+source ~/workspace/dotfiles/.nova_commands.sh
 
 source ~/git/dotfiles/login.sh
