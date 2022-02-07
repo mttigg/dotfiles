@@ -1,10 +1,9 @@
-" let g:ale_completion_autoimport = 1
 let g:ale_fixers=['tsserver']
 let g:ale_lint_on_text_changed=0
 let g:ale_lint_on_enter=0
 let g:ale_lint_on_filetype_changed=0
-let g:hardtime_default_on=1
 
+set directory^=$HOME/.vim/swap//
 set backupcopy=yes
 set cmdheight=2
 set relativenumber
@@ -22,8 +21,10 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 filetype indent on
-colorscheme efficient
+colorscheme gruvbox
 
+nnoremap <C-P>aa :argadd %<CR>
+nnoremap <C-P>ad :argdelete %<CR>
 nnoremap <C-P>f :find ./src/**/*
 nnoremap <C-P>g :grep -r  ./src/**<Left><Left><Left><Left><Left><Left><Left><Left><Left>
 
@@ -54,4 +55,5 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-unimpaired'
   Plug 'tpope/vim-vinegar'
   Plug 'tpope/vim-apathy'
+  Plug 'tpope/vim-obsession'
 call plug#end()
