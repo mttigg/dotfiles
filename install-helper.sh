@@ -181,6 +181,10 @@ cat ~/ascii.txt
 sleep 3
 
 echo "-----Sprucing-Up-VIM-----"
+# echo "Adding clipboard support"
+# sudo yum install xorg-x11-xauth
+# sudo yum install xclock xterm
+# sudo apt install libxt-dev
 echo "Installing Plugin Manager..."
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 echo "Fetching colorscheme..."
