@@ -6,7 +6,7 @@ echo "Creating Workspace Directory..."
 mkdir workspace
 echo "Accessing Git Directory..."
 cd workspace/
-echo "Git is now installed baby..."
+echo "Git is now installed..."
 
 git config --global user.name $GIT_USERNAME
 git config --global user.email $GIT_EMAIL
